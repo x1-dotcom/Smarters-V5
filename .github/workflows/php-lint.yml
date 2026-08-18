@@ -1,0 +1,39 @@
+name: Community PHP Lint
+
+on:
+  push:
+    paths:
+      - 'community/panel/**/*.php'
+      - '.github/workflows/php-lint.yml'
+  pull_request:
+    paths:
+      - 'community/panel/**/*.php'
+      - '.github/workflows/php-lint.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: sqlite3
+          coverage: none
+      - name: Lint PHP files
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            echo "Linting $file"
+            php -l "$file"
+          done < <(find community/panel -type f -name '*.php' -print0)
+      - name: Validate schema initializes
+        run: |
+          mkdir -p community/panel/data
+          php community/panel/install/init.php
+          test -f community/panel/data/x1.sqlite
