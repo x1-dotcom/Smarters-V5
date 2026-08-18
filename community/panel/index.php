@@ -1,0 +1,15 @@
+<?php
+declare(strict_types=1);
+require __DIR__.'/includes/bootstrap.php';
+if (!file_exists(__DIR__.'/data/x1.sqlite')) { header('Location: setup.php'); exit; }
+if (!x1_admin_exists()) { header('Location: setup.php'); exit; }
+if (x1_user()) { header('Location: studio.php'); exit; }
+$error='';
+if ($_SERVER['REQUEST_METHOD']==='POST') {
+    x1_verify_csrf();
+    $u=trim((string)($_POST['username']??'')); $p=(string)($_POST['password']??'');
+    if (x1_login($u,$p)) { header('Location: studio.php'); exit; }
+    usleep(350000); $error='Invalid credentials.'; x1_audit('auth.login_failed',['username'=>$u]);
+}
+$flash=x1_flash();
+?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>X1 Smarters Community</title><link rel="stylesheet" href="assets/app.css"></head><body class="login"><main class="login-shell"><section class="login-art"><div class="brand"><div class="brandmark"><svg viewBox="0 0 32 32" fill="none"><path d="M5 6l8 10-8 10h6l5-6 5 6h6l-8-10 8-10h-6l-5 6-5-6H5z" fill="currentColor"/></svg></div><span>X1 SMARTERS</span></div><div><div class="eyebrow">Community Control Plane</div><h1 class="hero-title">Control<br>without clutter.</h1><p class="hero-copy">A clean compatibility control plane for the Smarters V5 family — built around explicit contracts, safe configuration and observable device behaviour.</p><div class="chips"><span class="chip">Portals</span><span class="chip">Remote config</span><span class="chip">Updates</span><span class="chip">VPN profiles</span><span class="chip">Sports</span></div></div><div><div class="socials"><a href="<?=x1_e(x1_setting('community_forum_url','https://forum.x1panel.space'))?>" target="_blank" rel="noreferrer">Forum</a><a href="<?=x1_e(x1_setting('community_telegram_url','https://t.me/+XkuQS_QuD6g4Nzc0'))?>" target="_blank" rel="noreferrer">Telegram</a><a href="<?=x1_e(x1_setting('community_discord_url','https://discord.gg/vSSw6jHmw'))?>" target="_blank" rel="noreferrer">Discord</a></div><div class="tiny" style="margin-top:20px">Copyright © <?=x1_year()?> X1Tech Solutions SA. All Rights Reserved.</div></div></section><section class="login-form"><div class="eyebrow">Administrator</div><h2>Sign in</h2><p class="muted">Manage only your own X1 Smarters Community installation.</p><?php if($flash):?><div class="alert ok"><?=x1_e($flash)?></div><?php endif;?><?php if($error):?><div class="alert"><?=x1_e($error)?></div><?php endif;?><form method="post"><input type="hidden" name="_csrf" value="<?=x1_e(x1_csrf())?>"><div class="field"><label>Username</label><input class="input" name="username" autocomplete="username" required autofocus></div><div class="field"><label>Password</label><input class="input" type="password" name="password" autocomplete="current-password" required></div><button class="btn btn-primary" type="submit" style="width:100%">Enter Control Plane</button></form><p class="tiny" style="margin-top:18px">Version <?=x1_e(X1_VERSION)?> · Community edition</p></section></main></body></html>
