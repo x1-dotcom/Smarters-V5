@@ -1,147 +1,65 @@
-# X1 Smarters V5 Community
+# X1 Smarters Panel v1.3
 
-X1 Smarters V5 Community is the public compatibility/control-panel project for the Smarters V5 / Titan Smart family used in the X1 ecosystem.
+Self-hosted application management panel for compatible Smarters builds.
 
-> Status: **Phase S1 — clean community control plane implemented; device compatibility validation in progress**.
+## Highlights
 
-## What this repository is
+- English / Portuguese administration
+- Device registry, rules, profiles and bulk actions
+- APK Contract Lab, APK Lab and Android Validation
+- DNS Handshake Lab
+- TV/mobile pairing
+- Branding, VPN, Sports and Advertising
+- Announcements, reports and feedback
+- APK upload, history and rollback
+- Backup / restore and Migration Assistant
+- Diagnostics, Health Checks, alerts and notifications
+- Owner / Admin / Operator / Read Only roles
+- TOTP 2FA
+- Telegram notifications and secure bot commands
+- Discord, signed HTTPS webhooks and email integrations
 
-This repository contains an X1-owned Community control plane, compatibility documentation and installable baseline for supported Smarters V5-compatible clients.
+## Requirements
 
-The legacy panel supplied for compatibility analysis is **not** redistributed or copied unchanged. The X1 implementation reproduces only the compatibility contracts required by clients, with a new secure administration layer.
-
-## Confirmed from the supplied test APK
-
-- Android package: `com.titan.smart`
-- Core namespace present: `com.nst.iptvsmarterstvbox.*`
-- Android TV launcher support
-- Native OpenVPN components for ARM/ARM64/x86/x86_64
-- ExoPlayer/Media3-era playback components plus IJK native libraries
-- Remote/update, device, VPN, sports/content and TMDB-related code paths
-
-## Community control plane
-
-The new panel now includes:
-
-- secure first-run administrator creation
-- `password_hash()` / `password_verify()` authentication
-- CSRF protection
-- secure session cookies
-- prepared SQLite statements
-- audit trail
-- modern responsive X1 UI
-- dashboard using real database counters only
-- Portal / DNS management
-- runtime Maintenance configuration
-- Advertisement / Note hooks
-- Intro URL and Rate URL
-- update package / APK URL
-- VPN compatibility settings
-- Sports feed hook
-- observed Devices view
-- Announcements
-- Reports view
-- Audit view
-- automatic copyright year
-- X1 Forum / Telegram / Discord links
-
-## Compatibility API
-
-Implemented clean-room compatibility endpoints currently include:
-
-- `community/panel/api/dns.php`
-- `community/panel/api/index.php`
-- `community/panel/api/intro.php`
-- `community/panel/api/note.php`
-- `community/panel/api/rate.php`
-- `community/panel/api/update.php`
-- `community/panel/api/vpn.php`
-- `community/panel/api/sport.php`
-- `community/panel/api/sports.php`
-
-The legacy contracts for maintenance, advertisements, devices, reports, feedback and announcements are mapped in the runtime layer/documentation as well.
-
-**Important:** an endpoint existing does not make a feature GREEN. Each feature must still pass a real client test:
-
-`Panel → X1 compatibility endpoint → real APK request → visible device behaviour → negative test → GREEN`
-
-See [`docs/COMPATIBILITY_MATRIX.md`](docs/COMPATIBILITY_MATRIX.md).
+- PHP 8.1+
+- OpenSSL
+- Apache or Nginx
+- Writable `data/`, `uploads/` and `backups/`
+- HTTPS recommended
+- PHP cURL recommended for external integrations
+- PHP ZipArchive for ZIP migration
+- PHP SQLite3 for legacy SQLite extraction
 
 ## Installation
 
-Requirements:
+1. Download and extract the public package.
+2. Ensure `data/`, `uploads/` and `backups/` are writable.
+3. Open `install.php`.
+4. Create the Owner account.
+5. Open Diagnostics.
+6. Configure the Smarters contract and services.
+7. Validate the exact Android build before production use.
 
-- PHP 8.1+ recommended
-- PHP `SQLite3` extension
-- writable `community/panel/data/` directory for the web/PHP user
-- HTTPS in production
+Main application endpoint: `api/api.php`
 
-Basic flow:
+## Public package
 
-1. Deploy `community/panel/` under your web root.
-2. Ensure PHP SQLite3 is enabled.
-3. Open `setup.php` in the browser.
-4. Create the first administrator. There are **no default credentials**.
-5. Sign in through `index.php`.
-6. Configure Portals and Runtime settings.
-7. Point a compatible test client at the installation only after validating the expected client contract.
+`X1_SMARTERS_PANEL_v1.3_PUBLIC_CLEAN_OBFUSCATED.tar.bz2`
 
-The first-run setup page automatically disables itself after the first admin exists.
+SHA-256: `64ed75e560dc752080d65a19fb69c9c40178a915c6cf3995a69df3609997178b`
 
-## Security policy
+Logo and intro media are intentionally not bundled in the lightweight public archive. Upload them from **Branding** after installation.
 
-The old compatibility panel contained patterns we will not reproduce: default credentials, plaintext passwords, SQL concatenation, secrets bundled in files and disabled TLS verification in a proxy path.
+PHP files are conservatively minified to reduce casual source inspection. No `eval`, encoded runtime loader or unpacker is used.
 
-The X1 Community version instead requires:
+## Compatibility note
 
-- password hashing
-- CSRF on administrative writes
-- prepared statements
-- secure session cookie flags
-- no default `admin/admin`
-- no real IPTV/VPN/API secrets in Git
-- no APK signing keys in Git
-- no database files in Git
-- audit logging
-- server-side input validation
+Different application builds can implement remote configuration differently. Server-side delivery does not by itself prove visual Android behavior. Use Android Validation for real-device PASS / FAIL / N/A testing.
 
-See [`docs/SECURITY_INTAKE.md`](docs/SECURITY_INTAKE.md) and [`SECURITY.md`](SECURITY.md).
+## Community
 
-## Repository layout
-
-```text
-Smarters-V5/
-├── README.md
-├── NOTICE.md
-├── SECURITY.md
-├── docs/
-│   ├── COMPATIBILITY_MATRIX.md
-│   ├── PHASE_S1_RUNTIME.md
-│   └── SECURITY_INTAKE.md
-└── community/
-    ├── README.md
-    └── panel/
-        ├── api/
-        ├── assets/
-        ├── data/          # runtime, ignored by Git
-        ├── includes/
-        ├── install/
-        ├── setup.php
-        ├── index.php
-        ├── studio.php
-        └── logout.php
-```
-
-## Public distribution / protection
-
-The public Community project may distribute protected/minified X1-owned runtime artifacts. Protection is intended to protect X1 implementation IP — not to conceal licensing bypasses or redistribute proprietary third-party source code.
-
-The supplied Titan/Smarters APK and the legacy panel are analysis inputs and are not committed to this repository.
-
-## X1 Community
-
-- Forum: https://forum.x1panel.space/
 - Telegram: https://t.me/+XkuQS_QuD6g4Nzc0
+- Forum: https://forum.x1panel.space
 - Discord: https://discord.gg/vSSw6jHmw
 
 Copyright © 2026 X1Tech Solutions SA. All Rights Reserved.
