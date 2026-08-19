@@ -24,15 +24,45 @@ Self-hosted application management panel for compatible Smarters builds.
 - PHP 8.1+
 - OpenSSL
 - Apache or Nginx
-- Writable `data/`, `uploads/` and `backups/`
+- writable `data/`, `uploads/` and `backups/`
 - HTTPS recommended
 - PHP cURL recommended for external integrations
 - PHP ZipArchive for ZIP migration
 - PHP SQLite3 for legacy SQLite extraction
 
+## Public package
+
+The public PHP build is conservatively minified/obfuscated. No `eval`, encoded runtime loader or unpacker is used.
+
+GitHub stores the binary package in three parts under `release/`.
+
+### Linux / macOS
+
+```bash
+cd release
+chmod +x assemble-linux-macos.sh
+./assemble-linux-macos.sh
+```
+
+### Windows
+
+Run:
+
+```text
+release\assemble-windows.cmd
+```
+
+The resulting archive is:
+
+`X1_SMARTERS_PANEL_v1.3_PUBLIC_CLEAN_OBFUSCATED.tar.bz2`
+
+SHA-256:
+
+`64ed75e560dc752080d65a19fb69c9c40178a915c6cf3995a69df3609997178b`
+
 ## Installation
 
-1. Download and extract the public package.
+1. Assemble and extract the public package.
 2. Ensure `data/`, `uploads/` and `backups/` are writable.
 3. Open `install.php`.
 4. Create the Owner account.
@@ -42,15 +72,7 @@ Self-hosted application management panel for compatible Smarters builds.
 
 Main application endpoint: `api/api.php`
 
-## Public package
-
-`X1_SMARTERS_PANEL_v1.3_PUBLIC_CLEAN_OBFUSCATED.tar.bz2`
-
-SHA-256: `64ed75e560dc752080d65a19fb69c9c40178a915c6cf3995a69df3609997178b`
-
 Logo and intro media are intentionally not bundled in the lightweight public archive. Upload them from **Branding** after installation.
-
-PHP files are conservatively minified to reduce casual source inspection. No `eval`, encoded runtime loader or unpacker is used.
 
 ## Compatibility note
 
