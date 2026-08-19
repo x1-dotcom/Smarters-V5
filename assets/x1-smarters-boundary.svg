@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="330" viewBox="0 0 1600 330" role="img" aria-label="X1 Smarters capability boundary">
+  <rect width="1600" height="330" rx="24" fill="#070c12"/>
+  <text x="72" y="55" font-family="Arial Black,Arial,sans-serif" font-size="26" fill="#65eaff">X1 // CAPABILITY BOUNDARY</text>
+  <g font-family="Arial,Helvetica,sans-serif">
+    <rect x="70" y="90" width="690" height="180" rx="20" fill="#0a151c" stroke="#4fcde8"/>
+    <text x="105" y="128" font-size="20" fill="#fff" font-weight="700">PANEL CAN PROVIDE</text>
+    <text x="105" y="164" font-size="17" fill="#a8c4cf">configuration · profiles · services · branding · pairing</text>
+    <text x="105" y="196" font-size="17" fill="#a8c4cf">APK delivery · diagnostics · audit · version control</text>
+    <text x="105" y="234" font-size="15" fill="#58d4eb">PROVEN BY PANEL STATE</text>
+    <rect x="840" y="90" width="690" height="180" rx="20" fill="#11101b" stroke="#816fff"/>
+    <text x="875" y="128" font-size="20" fill="#fff" font-weight="700">CLIENT BUILD MUST SUPPORT</text>
+    <text x="875" y="164" font-size="17" fill="#b5b0ce">contract consumption · visual behavior · feature handling</text>
+    <text x="875" y="196" font-size="17" fill="#b5b0ce">device-specific runtime behavior · third-party compatibility</text>
+    <text x="875" y="234" font-size="15" fill="#9a86ff">PROVEN ONLY BY REAL BUILD VALIDATION</text>
+  </g>
+</svg>
