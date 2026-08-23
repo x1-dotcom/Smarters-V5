@@ -1,0 +1,46 @@
+name: Feature request
+description: Propose a focused improvement within repository scope
+title: "[FEATURE] "
+labels: []
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user or operator problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed capability
+      description: Describe the smallest useful change.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / authority impact
+      description: Does this introduce or move data authority, compatibility contracts, privileged actions or cross-system behavior?
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation plan
+      description: How should the change be tested and, where relevant, runtime-verified?
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Boundaries
+      options:
+        - label: This proposal does not require secrets or private customer/production data to be posted publicly.
+          required: true
+        - label: Any third-party content, assets or feeds required by this proposal will have an explicit compatible-use basis.
+          required: true
