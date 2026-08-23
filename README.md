@@ -3,26 +3,38 @@
 </p>
 
 <p align="center">
-  <strong>PUBLIC · FREE · SELF-HOSTED</strong><br>
+  <strong>PUBLIC · COMMUNITY · SELF-HOSTED</strong><br>
   Runtime configuration and application-management tooling for compatible Smarters-family builds.
+</p>
+
+<p align="center">
+  <a href="https://x1panel.space"><strong>WEBSITE</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://forum.x1panel.space"><strong>FORUM</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://discord.gg/vSSw6jHmw"><strong>DISCORD</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://t.me/+XkuQS_QuD6g4Nzc0"><strong>TELEGRAM</strong></a>
 </p>
 
 ---
 
 ## X1 Smarters Panel v1.3
 
-X1 Smarters Panel is a self-hosted control surface for managing compatible application builds from one place.
-
-It brings together device visibility, runtime configuration, branding, pairing, service integrations, APK handling, diagnostics and administrative controls without turning the public release into a deliberately crippled demo.
+**X1 Smarters Panel is a self-hosted control surface for managing compatible application builds from one place.**
 
 > **Free means functional.**
 > The public X1 release is intended to be useful as released.
+
+It brings together device visibility, runtime configuration, branding, pairing, service integrations, APK handling, diagnostics and administrative controls.
+
+---
 
 <p align="center">
   <img src="./assets/x1-smarters-flow.svg" alt="X1 Smarters runtime control loop" width="100%" />
 </p>
 
-## What the panel controls
+## What it controls
 
 - Device registry, rules, profiles and bulk actions
 - Runtime/application configuration
@@ -36,10 +48,8 @@ It brings together device visibility, runtime configuration, branding, pairing, 
 - Advertising controls
 - Announcements, reports and feedback
 - APK upload, version history and rollback
-- Backup / restore
-- Migration Assistant
-- Diagnostics and health checks
-- Alerts and notifications
+- Backup / restore and Migration Assistant
+- Diagnostics, health checks, alerts and notifications
 - Owner / Admin / Operator / Read Only roles
 - TOTP 2FA
 - Telegram notifications and secure bot commands
@@ -49,20 +59,26 @@ The administration interface supports **English and Portuguese**.
 
 ---
 
+## Operating model
+
+`DEFINE` → `DELIVER` → `PAIR` → `VALIDATE` → `OPERATE`
+
+The goal is not merely to send configuration. The goal is to close the loop between desired configuration and observed application behavior.
+
+---
+
 <p align="center">
   <img src="./assets/x1-smarters-boundary.svg" alt="X1 Smarters capability boundary" width="100%" />
 </p>
 
-## Runtime truth
+## Runtime truth / compatibility
 
 A configuration existing in the panel does **not** prove that every historical, third-party or modified application build consumes it correctly.
 
 The panel can prove what it stores and delivers. Real Android behavior must be validated against the exact client build and device.
 
-That is why X1 separates:
-
-**panel state** → what the server is configured to provide  
-**runtime proof** → what the real application actually does
+**Panel state** → what the server is configured to provide  
+**Runtime proof** → what the real application actually does
 
 Use Android Validation before treating a feature as production-proven.
 
@@ -78,6 +94,8 @@ Use Android Validation before treating a feature as production-proven.
 - PHP cURL recommended for external integrations
 - PHP ZipArchive for ZIP migration
 - PHP SQLite3 for legacy SQLite extraction
+
+---
 
 ## Public package
 
@@ -95,8 +113,6 @@ chmod +x assemble-linux-macos.sh
 
 ### Windows
 
-Run:
-
 ```text
 release\assemble-windows.cmd
 ```
@@ -109,7 +125,9 @@ Published SHA-256:
 
 `64ed75e560dc752080d65a19fb69c9c40178a915c6cf3995a69df3609997178b`
 
-## Installation
+---
+
+## Installation / Quick Start
 
 1. Assemble and extract the public package.
 2. Ensure `data/`, `uploads/` and `backups/` are writable.
@@ -127,29 +145,31 @@ Logo and intro media are intentionally not bundled in the lightweight public arc
 
 ---
 
-## Operating model
+## Security / responsibility boundary
 
-**DEFINE → DELIVER → PAIR → VALIDATE → OPERATE**
+Keep production credentials, signing material, private keys, customer information and installation-specific secrets out of public repositories and support reports. Use HTTPS, strong unique administrator credentials, TOTP where appropriate and the minimum filesystem permissions required by the deployment.
 
-The goal is not merely to send configuration. The goal is to close the loop between desired configuration and observed application behavior.
+---
+
+## Related X1 systems
+
+- [X1 GitHub](https://github.com/x1-dotcom)
+- [X1 Panel XCIPTV](https://github.com/x1-dotcom/X1-Panel-XCIPTV)
+- [X1 TiviMate Community](https://github.com/x1-dotcom/x1tivimate)
 
 ---
 
 ## Community
 
-- Telegram: https://t.me/+XkuQS_QuD6g4Nzc0
-- Forum: https://forum.x1panel.space
-- Discord: https://discord.gg/vSSw6jHmw
+- Forum — https://forum.x1panel.space
+- Discord — https://discord.gg/vSSw6jHmw
+- Telegram — https://t.me/+XkuQS_QuD6g4Nzc0
 
 ---
 
 <p align="center">
-  <strong>CONFIGURE THE EXPERIENCE.</strong><br>
-  <strong>DELIVER THE STATE.</strong><br>
-  <strong>VALIDATE THE BUILD.</strong><br><br>
-  <strong>X1 // TV EXPERIENCE</strong>
-</p>
-
-<p align="center">
-  Copyright © 2026 X1Tech Solutions SA. All Rights Reserved.
+  <strong>CONFIGURE THE EXPERIENCE. DELIVER THE STATE. VALIDATE THE BUILD.</strong><br><br>
+  <strong>X1 // SOFTWARE · SYSTEMS · OPERATIONS</strong><br><br>
+  PUBLIC SOFTWARE. PRIVATE ENGINEERING. ONE X1 IDENTITY.<br><br>
+  <strong>© X1Tech Solutions SA · All Rights Reserved</strong>
 </p>
