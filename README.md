@@ -28,6 +28,10 @@
 
 It brings together device visibility, runtime configuration, branding, pairing, service integrations, APK handling, diagnostics and administrative controls.
 
+<p align="center">
+  <img src="./assets/x1-smarters-capabilities.svg" alt="X1 Smarters capability surface" width="100%" />
+</p>
+
 ---
 
 <p align="center">
