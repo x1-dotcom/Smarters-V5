@@ -8,7 +8,7 @@ Do **not** open a public issue containing exploit details, credentials, tokens, 
 
 Use GitHub private vulnerability reporting when it is available for this repository. If that option is not available, contact X1 through the official website and request a private security channel before sending technical exploit details.
 
-Website: https://x1panel.space
+Website: https://x1panelhq.com
 
 ## Include
 
